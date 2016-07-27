@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<Config name="languageconfig.xlsx">
+	<item Key="101" Chinese="开始比赛" TChinese="開始比賽" English="Start" />
+	<item Key="102" Chinese="登陆游戏" TChinese="登陸遊戲" English="Login" />
+</Config>
