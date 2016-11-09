@@ -337,6 +337,14 @@ App Secret:
    APP ID：1105701334
    APP KEY：vITTFATrvONvND7f
 
+ShareSDK:
+    IOS
+        App Key: 17cf0a6b69b26
+        App Secret: 8d61d34c6811315fafcff13943ec03fe
+    Android
+        App Key: 17cf266c4b154
+        App Secret: 0c675c11e61dbb669e67b249a1647f3c
+
 
 https://github.com/dcariola/XCodeEditor-for-Unity
 
@@ -437,8 +445,6 @@ ScrollRect LateUpdate:
 
     Instantiate prefabs in a loading screen reduced the time to open the Scroll View.
     
-MakeMessageTip -> 自适应内容大小
-
 牛皮
 
 many different work
@@ -554,9 +560,15 @@ public class ScreenLocate : MonoBehaviour
 优化
 ----
 
+ * http://www.theappguruz.com/blog/unity-optimization-initiative
+
  * Graphic Raycaster
  * 内存查看重复纹理打包一次，UI前加载
  * 图片大小4的倍数，可以压缩
+ * CanvasRenderer.OnTransformChanged
+   * Camera -> Overlay
+   * ScrollRect 
+ * 
  
 TODO
 ----
@@ -581,6 +593,8 @@ GOT
 `AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/Textures/UI/1.png")` LoadAssetAtPath
 路径参数要以`Assets`开头
 
+http://blog.uwa4d.com/archives/TechSharing_25.html
+
 
 测试
 ----
@@ -593,8 +607,189 @@ GOT
 
  * 玩家图标，皮肤图片要设置为 Read/Write Enabled， 分享
  * 764a870fb0f48bb7bbde5508e59ebd87
+ * keytool -list -v  -keystore signature_mantapps.store
  
 个推
 ----
  * a67126d905f8b596df4aead1a6df7e74
 
+ * Utility:
+    `return "file:///" + Application.dataPath.Replace("Assets", "");`
+
+预览 关闭特效
+
+特效和ui层次
+
+进入大厅时机修改
+
+个推ios接入
+
+stackoverflow 快速
+
+等级动画加入
+
+商店优化
+
+IPAD ShareSDK 微信不显示
+
+ * 生成ipa:
+
+    `zip -qr ppjl.ipa Payload/`
+
+
+ * 查看apk MD5
+
+    解压apk
+    `keytool -printcert -file META-INF/CERT.RSA`
+
+ * xcode 本地化
+
+    创建Localizable.strings
+
+#if !UNITY_EDITOR
+//            Debug.logger.logEnabled = false;
+#endif
+      
+
+结算：
+    已关注 点击 无反应
+
+Mac 下Editor目录下SDKPorter文件夹包含一键打包功能的东西
+
+目录下的ShareSDK.zip文件中包含必要的相应平台的库文件，不需要的解压删除后重新压缩
+
+它解压后的目录没有删除，在XCProject.cs文件加入代码
+
+
+优化Tip:
+
+    https://developer.microsoft.com/en-us/windows/holographic/performance_recommendations_for_unity#use_the_fastest_quality_settings
+    
+    http://blog.csdn.net/game_jqd/article/details/46928747
+
+
+    Graphics.PresentAndSync:
+        http://blog.uwa4d.com/archives/presentandsync.html
+
+
+CDN 关闭情况
+
+图片只接受 Raycast 换成Empty4Raycast
+Mask 用 RectMask2D 代替
+
+Canvas.SendWillRenderCanvases()
+    
+
+Camera上挂的Effect 动态
+
+Outline多了会有问题
+
+社交换皮
+
+不关闭其他应用的声音
+
+ A. Device.Present: 
+      1.GPU的presentdevice确实非常耗时，一般出现在使用了非常复杂的shader.
+      2.GPU运行的非常快，而由于Vsync的原因，使得它需要等待较长的时间.
+      3.同样是Vsync的原因，但其他线程非常耗时，所以导致该等待时间很长，比如：过量AssetBundle加载时容易出现该问题.
+      4.Shader.CreateGPUProgram:Shader在runtime阶段（非预加载）会出现卡顿(华为K3V2芯片).
+
+个推 ios 版本接入
+
+
+腾讯CDN
+https://console.qcloud.com/cos
+64630577
+Xianren+789+
+
+找到
+第一次登录或者创建角色慢
+原因
+创建角色随机
+宝箱移动到底部后晚一点消失
+effect 500
+
+
+核心购买限制数量
+
+商城购买刷新机制变动， 不Active , 数量不变
+OnTransformParentChanged()
+OnBeforeTransformParentChanged()
+
+特效Unload
+
+the dependency is not available, run "mix deps.get"
+
+审核Android包 LCL_LOCAL
+
+http://news.qq.com/a/20161023/007438.htm?pgv_ref=aio2015&ptlang=2052
+
+
+升级界面弹出两次
+
+推送
+
+公告？ ipad
+
+分享游戏朋友 重启
+
+
+图片的引用查看
+
+
+if (AllEntitys_Client.Count == 0)
+    return;
+
+List<int> keys = new List<int>(AllEntitys_Client.Keys);
+for (int i = 0; i < keys.Count; i++)
+{
+    int key = keys[i];
+//          foreach(Int32 key in new List<Int32>(AllEntitys_Client.Keys))
+//          {
+
+
+
+其他玩家信息名字信息， 位置居中 
+
+中文
+
+SDK
+
+不足重复
+
+ios 推送 角
+
+Android SDK 问题
+    1. classes.jar 和 unity-classes.jar 文件冲突
+    2. 微信登录文件和设置
+        如果微信登录返回uuid为空，查看 LoginHost=new.login.nikugame.com 设置
+        config/assets/config.properties `Wechat_APPID=wx45fe25962c2b07a8` 申请的APPID
+        微信登录crash:
+        src/com/nikugame/ppjl/wxapi/WXEntryActivity.java 包名
+
+    3. 
+
+
+const config
+
+en cn size 
+
+
+1.最上层的UI加一个Canvas 设置Layer 
+    如果这个UI是滚动栏的一部分
+
+C:\ProgramData\Oracle\Java\javapath
+
+
+1094180289
+0645b26e4c222714d78634066cfb2c1f
+http://www.sharesdk.cn
+
+wx45fe25962c2b07a8
+
+
+115.159.213.208
+uftp
+Nikugam@20161107
+
+两个向量点积返回的是一个值，为正, >0 , 角度为(0, PI/2), 为负, <0,角度为(PI/2, PI)
