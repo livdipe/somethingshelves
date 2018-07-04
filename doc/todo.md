@@ -807,3 +807,9 @@ Nikugam@20161107
 第四，我会把自己当成一个软件，今天的版本一定要比昨天好，明天的一定要比今天好；
 
 第五，发现一个明显的bug，不要问别人，马上去解决它。我觉得这是对技术追求最好的总结，对于一个工程师来说，无论在工作还是生活中都具有指导意义，它要求我们追求卓越，自律与高效。
+
+开机启动postsql:
+
+mkdir -p ~/Library/LaunchAgents
+ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
