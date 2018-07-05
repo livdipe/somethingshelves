@@ -807,3 +807,14 @@ Nikugam@20161107
 第四，我会把自己当成一个软件，今天的版本一定要比昨天好，明天的一定要比今天好；
 
 第五，发现一个明显的bug，不要问别人，马上去解决它。我觉得这是对技术追求最好的总结，对于一个工程师来说，无论在工作还是生活中都具有指导意义，它要求我们追求卓越，自律与高效。
+
+id integer
+question string （题目）
+category integer (分类，数学，经济)
+type tinyint (单选，多选，判断，填空，问答)
+level tinyint (简单，困难，地狱)
+option string json (选择题选项)
+answer string 答案
+date :datetime 日期
+
+mix phx.gen.html Questions Question questions name:string option:array:string answer:string date:datetime 
