@@ -12,4 +12,5 @@ socket.js (getElementById, innerHTML)
 index.html.eex
 
 Array Input:
- https://medium.com/@chipdean/phoenix-array-input-field-implementation-7ec0fe0949d
+ https://medium.com/@chipdean/phoenix-array-input-field-implementatjion-7ec0fe0949d
+ http://blog.plataformatec.com.br/2016/09/dynamic-forms-with-phoenix/
